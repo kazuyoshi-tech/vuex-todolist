@@ -1,5 +1,4 @@
 html {
-    background: orange;
     font-family: 'Avenir', Helvetica, Arial, 'system-ui', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -10,9 +9,7 @@ html {
   }
   
   header {
-    background: orange;
     height: 70px;
-    color: white;
     font-style: italic;
     font-size: 40px;
     text-align: left;
@@ -39,8 +36,8 @@ html {
     margin: 0 10px auto;
     display: flex;
     align-items: flex-start;
-    min-width: 320px;
-    width: 320px;
+    min-width: 700px;
+    width: 700px;
   }
   
   .text-input {
@@ -81,7 +78,7 @@ html {
   }
   
   .active .text-input {
-    background-color: #fff;
+    background-color: #00d78f;
   }
   .addable .add-button {
     background-color: #00d78f;
@@ -116,6 +113,12 @@ html {
   }
   
   .list-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+  }
+
+  .list-part {
     font-size: 20px;
     font-weight: bold;
     padding: 15px;

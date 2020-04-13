@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      Todo-List
+      Todo-List-vue
     </header>
     <main>
       <list-add />
@@ -9,6 +9,8 @@
         <list v-for="(item, index) in lists"
               :key="item.id"
               :title="item.title"
+              :part="item.part"
+              :priority="item.priority"
               :listIndex="index"
         />
       </div>

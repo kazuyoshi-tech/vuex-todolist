@@ -21,7 +21,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     addlist(state, payload) {
-        state.lists.push({ title: payload.title, cards:[] })
+        state.lists.push({ title: payload.title, part:payload.part, priority:payload.priority })
     },
     removelist(state, payload) {
       state.lists.splice(payload.listIndex, 1)
