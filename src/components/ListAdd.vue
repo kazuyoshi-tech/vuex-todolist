@@ -22,18 +22,20 @@
         </select>
       </div>
 
-      <div class="md-radio">
-        <input type="radio" v-model="priority" value="高" id="high" class="radio-input">
-        <label for="high">重要：高</label>
-      </div>
-      <div class="md-radio">
-        <input type="radio" v-model="priority" value="中" id="middle" class="radio-input">
-        <label for="middle">重要：中</label>
-      </div>
-      <div class="md-radio">
-        <input type="radio" v-model="priority" value="低" id="low" class="radio-input"> 
-        <label for="low">重要：低</label>
-      </div>
+      
+      <p>緊急度：</p>
+      <input type="radio" v-model="priority" value="高" id="high" class="radio-input">
+      <label for="high">高</label>
+      <input type="radio" v-model="priority" value="中" id="middle" class="radio-input">
+      <label for="middle">中</label>
+      <input type="radio" v-model="priority" value="低" id="low" class="radio-input"> 
+      <label for="low">低</label>
+
+      <br>
+      <br>
+
+      <p>期日を入力：<vuejs-datepicker v-model="deadline" :format="DatePickerFormat" placeholder="日付を入力"></vuejs-datepicker></p>
+      
       
       <!-- <input type="hidden" v-model="company" value="CYURICA"> -->
       
@@ -41,14 +43,23 @@
   </div>
 </template>
 
+
 <script>
+import vuejsDatepicker from "vuejs-datepicker";
+
 export default {
+  components: {
+    vuejsDatepicker
+  },
+  
   data: function() {
     return {
       title: '',
       part: '',
       priority: '',
       company: 'CYURICA',
+      DatePickerFormat: 'yyyy-MM-dd',
+      deadline: '',
       isEditing: true,
     }
   },
@@ -69,11 +80,12 @@ export default {
   },
   methods: {
     addList: function() {
-      this.$store.dispatch('addlist', { title: this.title, part: this.part, priority:this.priority, company:this.company })
+      this.$store.dispatch('addlist', { title: this.title, part: this.part, priority:this.priority, company:this.company, deadline:this.deadline })
       this.title = ''
       this.part = ''
       this.priority = ''
       this.company = ''
+      this.deadline = ''
     },
   }
 }

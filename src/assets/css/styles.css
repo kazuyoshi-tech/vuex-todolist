@@ -62,10 +62,9 @@ html {
 
   .selectdiv {
     position: relative;
-    /*Don't really need this just for demo styling*/
-    
+    /*Don't really need this just for demo styling*/ 
     min-width: 200px;
-    margin: 20px 33%;
+    padding: 20px 0px;
   }
   
   /* IE11 hide native button (thanks Matt!) */
@@ -74,7 +73,6 @@ html {
   }
   
   .selectdiv:after {
-    content: '<>';
     font: 17px "Consolas", monospace;
     color: #333;
     -webkit-transform: rotate(90deg);
@@ -103,7 +101,6 @@ html {
     width: 100%;
     max-width: 320px;
     height: 50px;
-    float: right;
     margin: 5px 0px;
     padding: 0px 24px;
     font-size: 16px;

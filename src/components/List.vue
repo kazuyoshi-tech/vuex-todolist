@@ -4,12 +4,20 @@
       <p :class="tododisplay">タイトル：{{ title }}</p>
       <p :class="tododisplay">部署：{{ part }}</p>
       <p :class="tododisplay">重要度：{{ priority }}</p>
+      <p :class="tododisplay">期日：{{ deadline | moment }}</p>
       <div class="deletelist" @click="removeList">×</div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
+  filters: {
+    moment: function (deadline) {
+      return moment(deadline).format('YYYY-MM-DD');
+    }
+  },
   data: function() {
     return {
       logicaldelet: false,
@@ -27,6 +35,10 @@ export default {
     priority: {
       type: String,
       required: true
+    },
+    deadline: {
+      type: String,
+      required: true,
     },
     listIndex: {
       type: Number,

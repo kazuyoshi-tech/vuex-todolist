@@ -19,9 +19,10 @@ const store = new Vuex.Store({
         }
       ],
   },
+  // .format('YYYY-MM-DD')
   mutations: {
     addlist(state, payload) {
-        state.lists.push({ title: payload.title, part: payload.part, priority: payload.priority, company: payload.company })
+        state.lists.push({ title: payload.title, part: payload.part, priority: payload.priority, company: payload.company, deadline: payload.deadline })
     },
     removelist(state, payload) {
       state.lists.splice(payload.listIndex, 1)

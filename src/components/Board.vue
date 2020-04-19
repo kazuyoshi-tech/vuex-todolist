@@ -11,6 +11,7 @@
               :title="item.title"
               :part="item.part"
               :priority="item.priority"
+              :deadline="item.deadline"
               :listIndex="index"
         />
       </div>
