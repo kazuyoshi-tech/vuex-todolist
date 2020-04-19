@@ -1,16 +1,20 @@
 <template>
   <div class="list">
-    <div class="listheader">
-      <p class="list-title">タイトル：{{ title }}</p>
-      <p class="list-part">部署：{{ part }}</p>
-      <p class="list-part">重要度：{{ priority }}</p>
+      <input type="checkbox"  v-model="logicaldelet" class="checkbox-todo"> リストを消化する
+      <p :class="tododisplay">タイトル：{{ title }}</p>
+      <p :class="tododisplay">部署：{{ part }}</p>
+      <p :class="tododisplay">重要度：{{ priority }}</p>
       <div class="deletelist" @click="removeList">×</div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data: function() {
+    return {
+      logicaldelet: false,
+    }
+  },
   props: {
     title: {
       type: String,
@@ -28,6 +32,16 @@ export default {
       type: Number,
       required: true
     }
+  },
+  computed: {
+    tododisplay() {
+      const tododisplay = ['list-title']
+      if (this.logicaldelet) {
+        tododisplay.push('done')
+      }
+      // console.log(tododisplay)
+      return tododisplay
+    },
   },
   methods: {
     removeList: function() {

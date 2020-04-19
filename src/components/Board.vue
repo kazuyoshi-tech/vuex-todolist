@@ -14,6 +14,7 @@
               :listIndex="index"
         />
       </div>
+      <input type="password" placeholder="password">
     </main>
   </div>
 </template>

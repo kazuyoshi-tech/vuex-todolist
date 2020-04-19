@@ -1,27 +1,44 @@
 <template>
-  <form :class="classList" @submit.prevent="addList">
-    <input type="checkbox" v-model="checkValue">
+  <div class="list">
+    <h2>リストを追加</h2>
+    <form :class="classList" @submit.prevent="addList">
 
-    <input v-model="title" type="text" class="text-input" placeholder="title">
-    <input v-model="title" type="password" class="text-input" placeholder="password">
+      <input v-model="title" type="text" class="text-input" placeholder="タイトル">
 
-    <select v-model="part">
-      <option disabled value="">部署を選択</option>
-      <option>営業</option>
-      <option>カスタマーサポート</option>
-      <option>開発</option>
-    </select>
+      <button type="submit"
+              class="add-button"
+              v-if="isEditing || titleExists">
+        Add
+      </button>
 
-    <input type="radio" v-model="priority" value="高"> 重要：高
-    <input type="radio" v-model="priority" value="中"> 重要：中
-    <input type="radio" v-model="priority" value="低"> 重要：低
+      <div class="selectdiv">
+        <select v-model="part" class="select-input">
+          <option disabled value="">部署を選択</option>
+          <option>営業</option>
+          <option>人事</option>
+          <option>総務</option>
+          <option>カスタマーサポート</option>
+          <option>開発</option>
+        </select>
+      </div>
 
-    <button type="submit"
-            class="add-button"
-            v-if="isEditing || titleExists">
-      Add
-    </button>
-  </form>
+      <div class="md-radio">
+        <input type="radio" v-model="priority" value="高" id="high" class="radio-input">
+        <label for="high">重要：高</label>
+      </div>
+      <div class="md-radio">
+        <input type="radio" v-model="priority" value="中" id="middle" class="radio-input">
+        <label for="middle">重要：中</label>
+      </div>
+      <div class="md-radio">
+        <input type="radio" v-model="priority" value="低" id="low" class="radio-input"> 
+        <label for="low">重要：低</label>
+      </div>
+      
+      <!-- <input type="hidden" v-model="company" value="CYURICA"> -->
+      
+    </form>
+  </div>
 </template>
 
 <script>
@@ -31,7 +48,7 @@ export default {
       title: '',
       part: '',
       priority: '',
-      checkValue: false,
+      company: 'CYURICA',
       isEditing: true,
     }
   },
@@ -52,19 +69,12 @@ export default {
   },
   methods: {
     addList: function() {
-      this.$store.dispatch('addlist', { title: this.title, part: this.part, priority:this.priority })
+      this.$store.dispatch('addlist', { title: this.title, part: this.part, priority:this.priority, company:this.company })
       this.title = ''
       this.part = ''
       this.priority = ''
+      this.company = ''
     },
-    // startEditing() {
-    //   this.isEditing = true
-    // },
-    // finishEditing() {
-    //   this.isEditing = false
-    // },
-    // @focusin="startEditing"
-    // @focusout="finishEditing"
   }
 }
 </script>

@@ -34,7 +34,7 @@ html {
   
   .addlist {
     margin: 0 10px auto;
-    display: flex;
+    /* display: flex; */
     align-items: flex-start;
     min-width: 700px;
     width: 700px;
@@ -42,7 +42,7 @@ html {
   
   .text-input {
     padding: 20px 15px;
-    width: calc(100% - 30px);
+    width: 500px;
     background-color: #ccc;
     border-radius: 8px;
     cursor: pointer;
@@ -59,10 +59,67 @@ html {
     outline: 0;
     cursor: initial;
   }
+
+  .selectdiv {
+    position: relative;
+    /*Don't really need this just for demo styling*/
+    
+    min-width: 200px;
+    margin: 20px 33%;
+  }
+  
+  /* IE11 hide native button (thanks Matt!) */
+  select::-ms-expand {
+  display: none;
+  }
+  
+  .selectdiv:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #333;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 11px;
+    /*Adjust for position however you want*/
+    
+    top: 18px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #999;
+    /*left line */
+    
+    position: absolute;
+    pointer-events: none;
+  }
+  
+  .selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+    
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: 50px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    -ms-word-break: normal;
+    word-break: normal;
+  }
   
   .add-button {
     margin-top: 15px;
     padding: 15px 18px;
+    float: right;
     background-color: #999;
     border: none;
     border-radius: 8px;
@@ -80,6 +137,7 @@ html {
   .active .text-input {
     background-color: #00d78f;
   }
+
   .addable .add-button {
     background-color: #00d78f;
     pointer-events: auto;
@@ -108,7 +166,6 @@ html {
   
   .listheader {
     width: 290px;
-    display: inline-flex;
     justify-content: space-between;
   }
   
@@ -118,11 +175,14 @@ html {
     padding: 15px;
   }
 
-  .list-part {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 15px;
+  .done {
+    text-decoration: line-through;
   }
+
+  /* 下記でやる予定だったがタイトルに横線が入らないバグがあったため不採用 */
+  /* .list-title + .done {
+    text-decoration: line-through;
+  } */
   
   .list-counter {
     color: rgb(0, 140, 255);
@@ -171,4 +231,45 @@ html {
     font-size: 18px;
     width: 100%;
     word-wrap: break-word;
+  }
+
+  .radio-input{
+    display: none;
+  }
+
+  .radio-input + label{
+    padding-left: 20px;
+    position:relative;
+    margin-right: 20px;
+  }
+
+  .radio-input + label::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #999;
+    border-radius: 50%;
+  }
+
+  .radio-input:checked + label{
+    color: #d01137;
+  }
+  .radio-input:checked + label::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 11px;
+    height: 11px;
+    background: #d01137;
+    border-radius: 50%;
+  }
+
+  input[type=checkbox] {
+    transform: scale(2);
   }
