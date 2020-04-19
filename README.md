@@ -25,7 +25,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 参考文献
 ```
-各input type での入力参照ページhttps://reffect.co.jp/vue/vue-js-input-operate#i-7
+各input type での入力参照ページ  https://reffect.co.jp/vue/vue-js-input-operate#i-7
 ```
 
 ```
