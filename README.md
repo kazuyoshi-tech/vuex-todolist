@@ -40,3 +40,5 @@ S3デプロイ
 https://qiita.com/kiyokiyo_kzsby/items/77bdb81a1ce1852b30ca
 https://www.ketancho.net/entry/2017/12/01/000000
 ```
+
+http://vue-todolist.s3-website-ap-northeast-1.amazonaws.com/
