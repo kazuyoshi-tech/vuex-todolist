@@ -4,6 +4,7 @@
       Todo-List-vue
     </header>
     <main>
+      <br>
       <list-add />
       <div class="list-index">
         <list v-for="(item, index) in lists"
@@ -11,7 +12,10 @@
               :title="item.title"
               :part="item.part"
               :priority="item.priority"
+              :author="item.author"
+              :responsiblePorson="item.responsiblePorson"
               :deadline="item.deadline"
+              :contents="item.contents"
               :listIndex="index"
         />
       </div>

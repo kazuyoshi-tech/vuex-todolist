@@ -1,15 +1,26 @@
 <template>
-  <div class="list">
-    <h2>リストを追加</h2>
+  <div class="list container">
+    <h4>リストを追加</h4>
     <form :class="classList" @submit.prevent="addList">
 
-      <input v-model="title" type="text" class="text-input" placeholder="タイトル">
+      <div class="col-xs-4">
+        <input v-model="title" type="text" class="text-input" placeholder="タイトル">
+      </div>
 
-      <button type="submit"
-              class="add-button"
-              v-if="isEditing || titleExists">
-        Add
-      </button>
+      <div class="col-xs-4">
+        <input v-model="author" type="text" class="" placeholder="作成者">
+        <input v-model="responsiblePorson" type="text" class="" placeholder="担当">
+      </div>
+
+      <div class="col-xs-4">
+        <button type="submit"
+                class="add-button"
+                v-if="isEditing || titleExists">
+          Add
+        </button>
+      </div>
+
+      <div class="col-xs-4">
 
       <div class="selectdiv">
         <select v-model="part" class="select-input">
@@ -22,19 +33,24 @@
         </select>
       </div>
 
-      
-      <p>緊急度：</p>
-      <input type="radio" v-model="priority" value="高" id="high" class="radio-input">
-      <label for="high">高</label>
-      <input type="radio" v-model="priority" value="中" id="middle" class="radio-input">
-      <label for="middle">中</label>
-      <input type="radio" v-model="priority" value="低" id="low" class="radio-input"> 
-      <label for="low">低</label>
+      </div>
 
-      <br>
-      <br>
+      <div class="col-xs-4">
+        <br>
+        <p>緊急度：</p>
+        <input type="radio" v-model="priority" value="高" id="high" class="radio-input">
+        <label for="high">高</label>
+        <input type="radio" v-model="priority" value="中" id="middle" class="radio-input">
+        <label for="middle">中</label>
+        <input type="radio" v-model="priority" value="低" id="low" class="radio-input"> 
+        <label for="low">低</label>
+      </div>
 
-      <p>期日を入力：<vuejs-datepicker v-model="deadline" :format="DatePickerFormat" placeholder="日付を入力"></vuejs-datepicker></p>
+
+      <div class="col-xs-3">
+        <br>
+        <p>期日を入力：<vuejs-datepicker v-model="deadline" :format="DatePickerFormat" placeholder="日付を入力"></vuejs-datepicker></p>
+      </div>
       
       
       <!-- <input type="hidden" v-model="company" value="CYURICA"> -->
@@ -55,6 +71,8 @@ export default {
   data: function() {
     return {
       title: '',
+      author: '',
+      responsiblePorson: '',
       part: '',
       priority: '',
       company: 'CYURICA',
@@ -80,8 +98,17 @@ export default {
   },
   methods: {
     addList: function() {
-      this.$store.dispatch('addlist', { title: this.title, part: this.part, priority:this.priority, company:this.company, deadline:this.deadline })
+      this.$store.dispatch('addlist', { title: this.title, 
+                                        part: this.part, 
+                                        priority:this.priority, 
+                                        company:this.company, 
+                                        deadline:this.deadline, 
+                                        author:this.author,
+                                        responsiblePorson:this.responsiblePorson,  
+                                        })
       this.title = ''
+      this.author = ''
+      this.responsiblePorson = ''
       this.part = ''
       this.priority = ''
       this.company = ''

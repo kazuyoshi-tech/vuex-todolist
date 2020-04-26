@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <board />
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <board />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
